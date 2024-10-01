@@ -1,9 +1,7 @@
 import { Hono } from 'hono'
 
-const app = new Hono()
+import { toSlug } from '../src/utils/toSlug';
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+const slug = toSlug("Mon exemple de chaîne à convertir!");
+console.log(slug); // Affiche: mon-exemple-de-chaine-a-convertir
 
-export default app
