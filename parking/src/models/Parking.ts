@@ -1,3 +1,4 @@
+
 // classe Parking avec comme attributs id, name, city_id, location, numberOfSpots, opened, hourlyRate et parkIds
 
 import { generateRandomNumberId } from '../utils/generateRandomNumberId';
