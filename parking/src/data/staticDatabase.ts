@@ -28,7 +28,7 @@ const parkings = [
   ];
 
 // exportation de la base de données statique
-export const staticDatabase = {
+    export const staticDatabase = {
     cities: [aixEnProvence, laSpezia, aixLaChapelle, sanCristobal, newcastle],
     parkings: parkings,
   };
