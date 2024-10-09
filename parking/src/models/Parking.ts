@@ -24,4 +24,14 @@ export class Parking {
     this.hourlyRate = hourlyRate;
     this.parkIds = [];
   }
+  //installation etape 3
+  //cliquer sur le lien
+  //sqlite3
+  //dowload les 2
+  //lancer sqllite 3
+  //variable d'environnement
+  //path
+  //modifier nouveau lien vers le dossier qui a les fichiers
+  //aller dans le dossier de travail 
+  //ouvrir un terminal et faire la commande sqlite3 ./parking.sqlite
 }
