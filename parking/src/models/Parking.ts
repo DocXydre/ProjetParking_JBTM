@@ -2,6 +2,7 @@
 
 import { generateRandomNumberId } from '../utils/generateRandomNumberId';
 import { GPS } from '../types/GPS';
+import { Spot } from './Spot';
 
 export class Parking {
   id: number;
@@ -22,5 +23,11 @@ export class Parking {
     this.opened = opened;
     this.hourlyRate = hourlyRate;
     this.parkIds = [];
+
+    // Génération automatique des spots
+    for (let i = 0; i < numberOfSpots; i++) {
+      const spot = new Spot(this.id);
+      this.parkIds.push(spot.id); 
+    }
   }
 }

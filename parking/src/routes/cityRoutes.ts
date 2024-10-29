@@ -1,9 +1,9 @@
 import { Hono } from 'hono';
+import { ReadAllCitiesController } from '../controllers/city/ReadAllCitiesController';
+import { ReadOneCityController } from '../controllers/city/ReadOneCityController';
 
 const cityRoutes = new Hono();
-
-cityRoutes.get('/', (c) => {
-  return c.text('All Cities');
-});
+cityRoutes.get('/', ReadAllCitiesController);
+cityRoutes.get('/:slug', ReadOneCityController);
 
 export default cityRoutes;
