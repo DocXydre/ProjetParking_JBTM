@@ -1,7 +1,7 @@
 import { Database } from 'bun:sqlite';
 
 // Connexion à la base de données SQLite (le fichier sera créé s’il n'existe pas)
-const db = new Database('src/data/parking.sqlite');
+export const db = new Database('src/data/parking.sqlite');
 
 // Création des tables
 
