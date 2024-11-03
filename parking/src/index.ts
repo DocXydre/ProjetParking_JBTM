@@ -6,7 +6,7 @@ import { serveStatic } from '@hono/node-server/serve-static';
 
 const app = new Hono()
 
-app.use('/static/*', serveStatic({ root: './static' }));
+app.use('/static/*', serveStatic({ root: './' }));
 
 app.get('/', HomeController)
 app.route('/parkings', parkingRoutes);
