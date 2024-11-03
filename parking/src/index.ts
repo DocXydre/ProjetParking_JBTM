@@ -9,7 +9,7 @@ const app = new Hono()
 const cities = staticDatabase.cities;
 const parkings = staticDatabase.parkings;
 
-app.use('/static/*', serveStatic({ root: './static' }));
+app.use('/static/*', serveStatic({ root: './' }));
 
 app.get('/', HomeController)
 app.route('/parkings', parkingRoutes);
