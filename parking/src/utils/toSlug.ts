@@ -4,13 +4,12 @@ export const toSlug = (str : string):string=>{
     const accents = str.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
     
     //tout mettre en minuscule
-    const minuscule = accents.toLowerCase();
+    const minuscule= accents.toLowerCase();
     
     //supprimer les caracteres speciaux
-    const caractere_speciaux = minuscule.replace(/[^a-z0-9\s-]/g, "");
+    const caractere_speciaux= minuscule.replace(/[^a-z0-9\s-]/g, "");
 
     //remplacer les espaces par des tirets
-    const slug = caractere_speciaux.trim().replace(/\s+/g, "-");
-
+    const slug= caractere_speciaux.trim().replace(/\s+/g, "-");
     return slug;
 }
