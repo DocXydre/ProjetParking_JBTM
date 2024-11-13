@@ -2,11 +2,16 @@ import { Layout } from '../shared/Layout';
 import { html } from 'hono/html';
 
 type City = { name: string; country: string };
-type Parking = { name: string; hourlyRate: number };
+type Parking = { id : number, name: string; hourlyRate: number };
+
+const ParkingLink = ({ parking }: { parking: Parking }) => html`
+  <li><a href="/parkings/${parking.id}">${parking.name} - €${parking.hourlyRate}/hour</a></li>
+`;
+
 
 const ParkingList = ({ parkings }: { parkings: Array<Parking> }) => html`
   <ul>
-    ${parkings.map(parking => html`<li>${parking.name} - €${parking.hourlyRate}/hour</li>`)}
+  ${parkings.map(parking => ParkingLink({ parking }))}
   </ul>
 `;
 
