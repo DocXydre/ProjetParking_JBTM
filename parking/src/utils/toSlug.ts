@@ -1,3 +1,4 @@
+// création de la fonction toSlug qui prend en paramètre une chaine de caractère et qui retourne une chaine de caractère
 export const toSlug = (str : string):string=>{
     
     //enlever les accents

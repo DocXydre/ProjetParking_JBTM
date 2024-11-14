@@ -14,6 +14,6 @@ bun run dev
 - Justin Burr
 
 ## Epics et User Stories
-- (À remplir en fonction des parties que vous avez réalisées. Par exemple : "Création de l'architecture de base", "Mise en place de la gestion des parkings", etc.)
+- Les outils et les fonctions city et park ont été fait par Justin tout comme les tests
+- Thomas a fait le reste donc la base de donnée et les fonctions parking et spot.
 
-open http://localhost:3000

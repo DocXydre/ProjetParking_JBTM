@@ -1,13 +1,8 @@
 // création d'une base de données statique
 
-// importation du type GPS
-import { GPS } from '../types/GPS';
-// importation de la classe City
+// importation de la classe City et de la classe Parking
 import { City } from '../models/City';
-// importation de la classe Parking
 import { Parking } from '../models/Parking';
-
-// création d'une base de données statique
 
 // création des villes
 const aixEnProvence = new City("Aix-en-Provence", "France", { latitude: 43.533329, longitude: 5.43333 });
