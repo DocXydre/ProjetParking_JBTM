@@ -1,26 +1,30 @@
+// importation des fonction ReadOneParkingView, translateToParking et de la base de données
 import { Context } from 'hono';
 import { db } from '../../data/database';
 import { ReadOneParkingView } from '../../views/parking/ReadOneParkingView';
 import { translateToParking } from '../../utils/SqlTranslator';
 
+// création de la fonction ReadOneParkingController qui renvoie une vue HTML avec les informations d'un parking
 export const ReadOneParkingController = async (c: Context) => {
-  // Récupère l'id du parking à partir des paramètres de la requête
+  // récupération de l'id du parking
   const id = Number(c.req.param('id'));
 
-  // Requête SQL pour récupérer le parking par son id
+  // récupération des données de la base de données
+  // la requête SQL permet de sélectionner les colonnes id, name, location, numberOfPlaces, opened, hourlyRate, city_id de la table parkings
+  // selon l'id du parking
   const parkingData = db.query(`
     SELECT id, name, location, numberOfPlaces, opened, hourlyRate, city_id FROM parkings WHERE id = ?
   `).get(id) as any;
 
-  // Vérifie si le parking existe
+  // vérifie si le parking existe
   if (!parkingData) {
     return c.text("Parking non trouvé", 404);
   }
 
-  // Transformation des données SQL en instance de `Parking`
+  // transformation des données en instances de Parking
   const parking = translateToParking(parkingData);
 
-  // Passer le parking et la ville à la vue
+  // création de la vue HTML
   const view = ReadOneParkingView({ parking });
   return c.html(view);
 };

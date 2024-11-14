@@ -1,7 +1,10 @@
+// importation de la fonction html et du type Context
 import { html } from 'hono/html';
 import { Context } from 'hono';
 
+// création de la fonction HomeController qu'on exporte
 export const HomeController = (c: Context) => {
+  // création de la constante view qui contient le code HTML de la page d'accueil
   const view = html`
     <!DOCTYPE html>
     <html lang="en">

@@ -1,10 +1,14 @@
+// importation de html 
 import { html } from 'hono/html';
 
+// création du type Props avec comme attributs children et pageTitle
 type Props = {
   children: any;
   pageTitle: string;
 };
 
+// création de la fonction Layout avec comme paramètre children et pageTitle
+// qui retourne une vue HTML avec le layout de la page
 export const Layout = ({ children, pageTitle }: Props) => html`
   <!DOCTYPE html>
   <html lang="en">

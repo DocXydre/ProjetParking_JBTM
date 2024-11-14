@@ -1,8 +1,9 @@
+// importation des classes City et Parking et du type GPS
 import { City } from '../models/City';
 import { Parking } from '../models/Parking';
 import { GPS } from '../types/GPS';
 
-// Type des données SQL pour la table `cities`
+// type des données SQL pour la table cities
 export type CityData = {
   id: number;
   name: string;
@@ -11,7 +12,7 @@ export type CityData = {
   country: string;
 };
 
-// Type des données SQL pour la table `parkings`
+// type des données SQL pour la table parkings
 export type ParkingData = {
   id: number;
   name: string;
@@ -22,11 +23,13 @@ export type ParkingData = {
   city_id: number;
 };
 
-// Fonction pour convertir les données SQL en instance de `City`
+// création de la fonction pour convertir les données SQL en instance de City
 export function translateToCity(data: CityData): City {
+  // récupération des coordonnées GPS 
   const [latitude, longitude] = data.location.split(',').map(Number);
   const location: GPS = { latitude, longitude };
 
+  // création de l'instance de City
   const city = new City(data.name, data.country, location);
   city.id = data.id;
   city.slug = data.slug;
@@ -34,11 +37,13 @@ export function translateToCity(data: CityData): City {
   return city;
 }
 
-// Fonction pour convertir les données SQL en instance de `Parking`
+// création de la fonction pour convertir les données SQL en instance de Parking
 export function translateToParking(data: ParkingData): Parking {
+  // récupération des coordonnées GPS
   const [latitude, longitude] = data.location.split(',').map(Number);
   const location: GPS = { latitude, longitude };
 
+  // création de l'instance de Parking
   const parking = new Parking(data.name, data.city_id, location, data.numberOfPlaces, data.opened, data.hourlyRate);
   parking.id = data.id;
 

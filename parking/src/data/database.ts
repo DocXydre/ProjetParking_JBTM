@@ -1,11 +1,12 @@
+//Importation de la classe Database depuis le module bun:sqlite
 import { Database } from 'bun:sqlite';
 
-// Connexion à la base de données SQLite (le fichier sera créé s’il n'existe pas)
+// connexion à la base de données SQLite (le fichier sera créé s’il n'existe pas)
 export const db = new Database('src/data/parking.sqlite');
 
-// Création des tables
+// création des tables
 
-// Table cities
+// table cities
 db.run(`
   CREATE TABLE IF NOT EXISTS "cities" (
     "id" INTEGER NOT NULL,
@@ -17,7 +18,7 @@ db.run(`
   );
 `);
 
-// Table parkings
+// table parkings
 db.run(`
   CREATE TABLE IF NOT EXISTS "parkings" (
     "id" INTEGER NOT NULL,
@@ -32,7 +33,7 @@ db.run(`
   );
 `);
 
-// Table parks
+// table parks
 db.run(`
   CREATE TABLE IF NOT EXISTS "parks" (
     "id" TEXT NOT NULL UNIQUE,
@@ -46,7 +47,7 @@ db.run(`
   );
 `);
 
-// Table spots
+// table spots
 db.run(`
   CREATE TABLE IF NOT EXISTS "spots" (
     "id" INTEGER NOT NULL,
@@ -56,9 +57,9 @@ db.run(`
   );
 `);
 
-// Insertion des données dans les tables
+// insertion des données dans les tables
 
-// Insertion dans `cities`
+// insertion dans cities
 db.run(`
 	INSERT INTO cities (name, slug, location, country) VALUES
 	('Aix-en-Provence', 'aix-en-provence', '43.533329,5.43333', 'France'),
@@ -68,7 +69,7 @@ db.run(`
 	('Newcastle upon Tyne', 'newcastle-upon-tyne', '54.978252,-1.617439', 'United Kingdom');
   `);
   
-  // Insertion dans `parkings`
+  // insertion dans parkings
   db.run(`
 	INSERT INTO parkings (name, location, numberOfPlaces, opened, hourlyRate, city_id) VALUES
 	('Parking A', '43.533329,5.43333', 100, 1, 4.5, 1),
@@ -79,4 +80,5 @@ db.run(`
 	('Parking F', '54.978252,-1.617439', 60, 1, 2.4, 5);
   `);
 
+  // message de confirmation
 console.log("Database and tables created successfully!");

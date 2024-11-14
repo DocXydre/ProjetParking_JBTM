@@ -1,34 +1,40 @@
+// importation des fonction ReadOneCityView, translateToCity, translateToParking et de la base de données
 import { Context } from 'hono';
 import { db } from '../../data/database';
 import { ReadOneCityView } from '../../views/city/ReadOneCityView';
 import { translateToCity, translateToParking } from '../../utils/SqlTranslator';
 
+// création de la fonction ReadOneCityController qui renvoie une vue HTML avec les informations d'une ville
 export const ReadOneCityController = async (c: Context) => {
-  // Récupère le slug de la ville à partir des paramètres de la requête
+  // récupération du slug de la ville
   const slug = c.req.param('slug');
 
-  // Requête SQL pour récupérer la ville par son slug
+  // récupération des données de la base de données
+  // la requête SQL permet de sélectionner les colonnes id, name, slug, location, country de la table cities
+  // selon le slug de la ville
   const cityData = db.query(`
     SELECT id, name, slug, location, country FROM cities WHERE slug = ?
   `).get(slug) as any;
 
-  // Vérifie si la ville existe
+  // vérifie si la ville existe
   if (!cityData) {
     return c.text("Ville non trouvée", 404);
   }
 
-// Transformation des données SQL en instance de `City`
+// transformation des données en instances de City
   const city = translateToCity(cityData);
 
-  // On récupère également les parkings associés à cette ville
+  // récupération des données de la base de données
+  // la requête SQL permet de sélectionner toutes les colonnes de la table parkings
+  // selon l'id de la ville
   const parkingsData = db.query(`
     SELECT * FROM parkings WHERE city_id = ?
   `).all(city.id) as any[];
 
-  // Transformation des données SQL en instances de `Parking`
+  // transformation des données en instances de Parking
   const parkings = parkingsData.map(translateToParking);
 
-  // Passer la ville et les parkings à la vue
+  // création de la vue HTML
   const view = ReadOneCityView({ city, parkings });
   return c.html(view);
 };
