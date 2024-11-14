@@ -23,3 +23,6 @@ app.route('/cities', cityRoutes);
 
 // on exporte l'application
 export default app
+
+// Affiche dans les logs le message "Serveur lancé sur le port localhost:3000"
+console.log('Serveur lancé sur le port localhost:3000')
