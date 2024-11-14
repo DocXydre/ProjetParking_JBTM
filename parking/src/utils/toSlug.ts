@@ -1,3 +1,4 @@
+// création de la fonction toSlug qui prend en paramètre une chaîne de caractères et qui renvoie une chaîne de caractères
 export const toSlug = (str : string):string=>{
     
     //enlever les accents
@@ -11,6 +12,5 @@ export const toSlug = (str : string):string=>{
 
     //remplacer les espaces par des tirets
     const slug = caractere_speciaux.trim().replace(/\s+/g, "-");
-
     return slug;
 }
