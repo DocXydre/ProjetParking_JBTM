@@ -1,0 +1,141 @@
+{
+	"info": {
+		"_postman_id": "e2416786-3543-42db-bf3b-b7042a3af772",
+		"name": "EuroPark",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39705065"
+	},
+	"item": [
+		{
+			"name": "Page d'accueil",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//vérifie que le statut est 200\r",
+							"pm.test(\"Statut est 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Parking",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//vérifie que le statut est 200\r",
+							"pm.test(\"Statut est 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Vérifie que le nom du parking est correct\r",
+							"pm.test(\"Les informations du parking sont correctes\", function () {\r",
+							"  pm.expect(pm.response.text()).to.include(\"Parking A\"); \r",
+							"});\r",
+							"\r",
+							"//Verifie que le serveur retourne du HTML\r",
+							"pm.test(\"Le Content-Type de la réponse est du HTML\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");\r",
+							"});\r",
+							"\r",
+							"//Vérifie la présence de l'en tête 'List Of Parkings' donc bien affichée\r",
+							"pm.test(\"Présence de 'List of Parkings'\", function () {\r",
+							"    const responseBody = pm.response.text();\r",
+							"    pm.expect(responseBody).to.include('List of Parkings');\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/parkings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"parkings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cities",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//vérifie que le statut est de 200\r",
+							"pm.test(\"Statut est 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Vérifie que le titre <h1> est correct\r",
+							"pm.test(\"Titre correct\", function () {\r",
+							"  pm.expect(pm.response.text()).to.include(\"<h1>List of Cities</h1>\");  \r",
+							"});\r",
+							"\r",
+							"// Vérifie que le lien vers les villes est présent\r",
+							"pm.test(\"Lien vers les villes présent\", function () {\r",
+							"  pm.expect(pm.response.text()).to.include('<a href=\"/cities/aix-en-provence\">Aix-en-Provence</a>');  \r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/cities",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cities"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

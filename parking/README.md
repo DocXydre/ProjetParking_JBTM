@@ -25,5 +25,7 @@ Il faut faire au cas ou si la photo ne s'affiche pas :
 ```sh
 bun add @hono/node-server
  ```
+## Tests avec Postman
+Les tests réalisés avec postman sont dans le dossier test et c'est un fichier .json, il y a juste a l'exporter dans Postman
 
 open http://localhost:3000

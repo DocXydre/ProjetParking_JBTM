@@ -13,7 +13,7 @@ const newcastle = new City("Newcastle upon Tyne", "Angleterre", { latitude: 54.9
 
 // création des parkings
 const parkings = [
-  new Parking("Parking A", aixEnProvence.id, { latitude: 43.533329, longitude: 5.43333 }, 100, true, 4.5),
+  new Parking("Parking A", aixEnProvence.id, { latitude: 43.533329, longitude: 5.43333 } , 100, true, 4.5),
   new Parking("Parking B", laSpezia.id, { latitude: 44.238366, longitude: 9.6912326 }, 50, true, 3),
   new Parking("Parking C", laSpezia.id, { latitude: 44.238366, longitude: 9.6912326 }, 80, true, 2.5),
   new Parking("Parking D", aixLaChapelle.id, { latitude: 50.776351, longitude: 6.083862 }, 40, true, 2.8),
